@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AK DigitalX</title>
+    <link rel="icon" href="https://github.com/Sharaafath16/AK-DigitalX-Pvt-Ltd/blob/main/or%20log.png?raw=true">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Theme Toggle -->
+    <div class="theme-toggle">
+        <div class="toggle-icon light-icon"><i class="fas fa-sun"></i></div>
+        <div class="toggle-icon dark-icon active"><i class="fas fa-moon"></i></div>
+    </div>
+
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="loader-container">
+            <div class="cube-wrapper">
+                <div class="cube">
+                    <div class="cube-face front"></div>
+                    <div class="cube-face back"></div>
+                    <div class="cube-face right"></div>
+                    <div class="cube-face left"></div>
+                    <div class="cube-face top"></div>
+                    <div class="cube-face bottom"></div>
+                </div>
+            </div>
+            <div class="loader-text">
+                <span>L</span>
+                <span>O</span>
+                <span>A</span>
+                <span>D</span>
+                <span>I</span>
+                <span>N</span>
+                <span>G</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- WebGL Background -->
+    <div id="webgl-background"></div>
+
+    <!-- Background Effects -->
+    <div class="background-effects">
+        <div class="gradient-orb orb1"></div>
+        <div class="gradient-orb orb2"></div>
+        <div class="gradient-orb orb3"></div>
+        <div class="gradient-orb orb4"></div>
+        <div class="gradient-orb orb5"></div>
+    </div>
+
+    <!-- Animated Particles Background -->
+    <div id="particles-background"></div>
+
+    <!-- Custom Cursor -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <div class="logo-text">AK DigitalX Pvt Ltd</div>
+            <div class="logo-dot"></div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#home" class="active nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="menu-toggle">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div id="hero-canvas-container">
+                <canvas id="hero-canvas"></canvas>
+            </div>
+            <div class="hero-content">
+                <div class="hero-subtitle">Welcome to my universe</div>
+                <h1 class="hero-title">
+                    <span class="gradient-text">Software</span>
+                    <span class="neon-text">Developer</span>
+                </h1>
+                <p class="hero-description">Crafting immersive digital experiences through code and design</p>
+                <div class="cta-buttons">
+                    <a href="#projects" class="btn btn-primary">
+                        <span>View Projects</span>
+                        <div class="btn-glow"></div>
+                    </a>
+                    <a href="#contact" class="btn btn-outline">
+                        <span>Contact Me</span>
+                        <div class="btn-glow"></div>
+                    </a>
+                </div>
+            </div>
+            <div class="scroll-indicator">
+                <div class="scroll-text">Scroll Down</div>
+                <div class="scroll-icon">
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+            </div>
+            <div class="hero-3d-text" id="hero-3d-text"></div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about">
+            <div class="section-header">
+                <h2 class="section-title">About <span class="gradient-text">Me</span></h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="about-content">
+                <div class="about-image-container">
+                    <div class="about-image-wrapper">
+                        <div class="about-image">
+                            <img src="https://raw.githubusercontent.com/Sharaafath16/AK-DigitalX-Pvt-Ltd/refs/heads/main/profile.jpg" alt="Profile Photo">
+                        </div>
+                        <div class="image-decoration"></div>
+                        <div class="image-glow"></div>
+                    </div>
+                    <div class="experience-badge">
+                        <div class="years">2+</div>
+                        <div class="text">Years<br>Experience</div>
+                    </div>
+                </div>
+                <div class="about-text">
+                    <h3 class="about-subtitle">Bringing <span class="gradient-text">imagination</span> to reality</h3>
+                    <p>I'm a Software developer passionate about building immersive digital experiences that push the boundaries of web technology. Specializing in interactive 3D websites and applications, I blend technical expertise with artistic vision.</p>
+                    <p>My approach combines cutting-edge technologies with thoughtful design principles to create memorable digital journeys that engage and inspire.</p>
+                    
+                    <div class="about-stats">
+                        <div class="stat-item">
+                            <div class="stat-number"><span class="counter" data-target="10">0</span>+</div>
+                            <div class="stat-label">Projects Completed</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number"><span class="counter" data-target="8">0</span>+</div>
+                            <div class="stat-label">Happy Clients</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number"><span class="counter" data-target="3">0</span>+</div>
+                            <div class="stat-label">Awards Won</div>
+                        </div>
+                    </div>
+                    
+                    <div class="personal-info">
+                        <div class="info-item">
+                            <div class="info-label">Name:</div>
+                            <div class="info-value">Anver Sharaafath</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">Email:</div>
+                            <div class="info-value">anversharaafath16@gmail.com</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">Location:</div>
+                            <div class="info-value">UD 1/2 Ampara Road Sammanthurai, Sri Lanka</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">Availability:</div>
+                            <div class="info-value">Freelance / Full-time</div>
+                        </div>
+                    </div>
+                    
+                    <div class="about-buttons">
+                        <a href="#" class="btn btn-primary">
+                            <span>Download CV</span>
+                            <div class="btn-glow"></div>
+                        </a>
+                        <div class="social-links">
+                            <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-dribbble"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="floating-shapes">
+                <div class="shape shape1"></div>
+                <div class="shape shape2"></div>
+                <div class="shape shape3"></div>
+                <div class="shape shape4"></div>
+            </div>
+            <div id="about-3d-scene"></div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="projects">
+            <div class="section-header">
+                <h2 class="section-title">My <span class="gradient-text">Projects</span></h2>
+                <div class="section-line"></div>
+            </div>
+            
+            <div class="project-filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="3d">3D Experiences</button>
+                <button class="filter-btn" data-filter="web">Web Development</button>
+                <button class="filter-btn" data-filter="interactive">Interactive Design</button>
+            </div>
+            
+            <div class="projects-grid">
+                <div class="project-card" data-category="3d">
+                    <div class="project-preview">
+                        <img src="https://cdn.prod.website-files.com/62d1070c12d3c8115209b019/67224ee3b18d0d296af9c598_66b377bfb0fba82fd35d6440_6617a381c313ffcd0ce9cb3c_webflow%252520preview.png" alt="3D Product Configurator">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="#" class="project-link"><i class="fas fa-eye"></i></a>
+                                <a href="#" class="project-link"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                        <div class="project-canvas-container">
+                            <canvas class="project-canvas"></canvas>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-title">3D Product Configurator</h3>
+                        <p class="project-description">An immersive 3D product customization experience with realistic materials and lighting.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Three.js</span>
+                            <span class="tech-tag">WebGL</span>
+                            <span class="tech-tag">GLSL</span>
+                            <span class="tech-tag">JavaScript</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card" data-category="interactive">
+                    <div class="project-preview">
+                        <img src="https://topstepllc.com/wp-content/uploads/2024/09/AdobeStock_857608481.jpeg" alt="Interactive Data Visualization">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="#" class="project-link"><i class="fas fa-eye"></i></a>
+                                <a href="#" class="project-link"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                        <div class="project-canvas-container">
+                            <canvas class="project-canvas"></canvas>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-title">Interactive Data Visualization</h3>
+                        <p class="project-description">A dynamic 3D visualization dashboard for complex data sets with animated transitions.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">D3.js</span>
+                            <span class="tech-tag">Three.js</span>
+                            <span class="tech-tag">SVG</span>
+                            <span class="tech-tag">Canvas</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card" data-category="web">
+                    <div class="project-preview">
+                        <img src="https://market-resized.envatousercontent.com/previews/files/545841101/01.jpg?w=590&h=300&cf_fit=crop&crop=top&format=auto&q=85&s=9099bb18cd3d6c9674e25fabba8f3f4d164b382384816a85fa4a3bf2283df320" alt="E-commerce Platform">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="#" class="project-link"><i class="fas fa-eye"></i></a>
+                                <a href="#" class="project-link"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                        <div class="project-canvas-container">
+                            <canvas class="project-canvas"></canvas>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-title">Hardware Inventory Management E-commerce Platform</h3>
+                        <p class="project-description">A full-featured online store with 3D product previews and immersive shopping experience.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">PHP </span>
+                            <span class="tech-tag">CSS</span>
+                            <span class="tech-tag">MySQL</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card" data-category="3d">
+                    <div class="project-preview">
+                        <img src="https://media.istockphoto.com/id/1370687004/photo/art-gallery-showing-a-digital-installation-with-a-bright-display-and-glowing-blocks.jpg?s=612x612&w=0&k=20&c=iVBwEvLieek6c3tPWRes_0mt2V5ciOdbmdXDuaq8cOg=" alt="Virtual Gallery">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="#" class="project-link"><i class="fas fa-eye"></i></a>
+                                <a href="#" class="project-link"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                        <div class="project-canvas-container">
+                            <canvas class="project-canvas"></canvas>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-title">Virtual Art Gallery</h3>
+                        <p class="project-description">An immersive 3D virtual gallery showcasing digital artwork with interactive elements.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Three.js</span>
+                            <span class="tech-tag">HTML5</span>
+                            <span class="tech-tag">css</span>
+                            <span class="tech-tag">JavaScript</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card" data-category="interactive">
+                    <div class="project-preview">
+                        <img src="https://media.licdn.com/dms/image/v2/D5612AQETFfH8376I1g/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1692275183285?e=2147483647&v=beta&t=HbYiD6NhjTMEOjwJJmIM2yCtD9_1_mrrdJYjRet6P-Q" alt="Interactive Storytelling">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="#" class="project-link"><i class="fas fa-eye"></i></a>
+                                <a href="#" class="project-link"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                        <div class="project-canvas-container">
+                            <canvas class="project-canvas"></canvas>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-title">Interactive Storytelling</h3>
+                        <p class="project-description">A narrative-driven experience with interactive 3D elements and dynamic content.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">Three.js</span>
+                            <span class="tech-tag">GSAP</span>
+                            <span class="tech-tag">HTML5</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card" data-category="web">
+                    <div class="project-preview">
+                        <img src="https://tse1.mm.bing.net/th?q=marketing%20agency%20website%20template" alt="Portfolio Website">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="#" class="project-link"><i class="fas fa-eye"></i></a>
+                                <a href="#" class="project-link"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                        <div class="project-canvas-container">
+                            <canvas class="project-canvas"></canvas>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-title">Creative Agency Website</h3>
+                        <p class="project-description">A vibrant, interactive website for a creative agency with 3D elements and animations.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">HTML5</span>
+                            <span class="tech-tag">CSS3</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">GSAP</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="projects-cta">
+                <a href="#" class="btn btn-primary">
+                    <span>View All Projects</span>
+                    <div class="btn-glow"></div>
+                </a>
+            </div>
+            
+            <div id="projects-3d-background"></div>
+        </section>
+
+        <!-- 3D Model Showcase -->
+        <section class="model-showcase">
+            <div class="model-container">
+                <canvas id="model-canvas"></canvas>
+                <div class="model-text">
+                    <h2 class="gradient-text">Interactive 3D Experiences</h2>
+                    <p>Explore my work in immersive 3D development</p>
+                </div>
+                <div class="model-controls">
+                    <button class="model-control" data-model="1"><span>Model 1</span></button>
+                    <button class="model-control" data-model="2"><span>Model 2</span></button>
+                    <button class="model-control" data-model="3"><span>Model 3</span></button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="skills">
+            <div class="section-header">
+                <h2 class="section-title">My <span class="gradient-text">Skills</span></h2>
+                <div class="section-line"></div>
+            </div>
+            
+            <div class="skills-container">
+                <div class="skills-3d">
+                    <canvas id="skills-canvas"></canvas>
+                    <div class="skills-orb"></div>
+                    <div class="skills-interaction-hint">
+                        <i class="fas fa-hand-pointer"></i>
+                        <span>Interact with the sphere</span>
+                    </div>
+                </div>
+                
+                <div class="skills-content">
+                    <div class="skills-tabs">
+                        <button class="tab-btn active" data-tab="development">Development</button>
+                        <button class="tab-btn" data-tab="design">Design</button>
+                        <button class="tab-btn" data-tab="3d">3D & Animation</button>
+                    </div>
+                    
+                    <div class="tab-content active" id="development">
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <div class="skill-name">HTML5 / CSS3</div>
+                                <div class="skill-percent">95%</div>
+                            </div>
+                            <div class="skill-progress-bg">
+                                <div class="skill-progress" style="width: 95%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <div class="skill-name">JavaScript</div>
+                                <div class="skill-percent">90%</div>
+                            </div>
+                            <div class="skill-progress-bg">
+                                <div class="skill-progress" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <div class="skill-name">Python / PHP</div>
+                                <div class="skill-percent">85%</div>
+                            </div>
+                            <div class="skill-progress-bg">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <div class="skill-name">React / Vue.js</div>
+                                <div class="skill-percent">50%</div>
+                            </div>
+                            <div class="skill-progress-bg">
+                                <div class="skill-progress" style="width: 50%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <div class="skill-name">Node.js </div>
+                                <div class="skill-percent">55%</div>
+                            </div>
+                            <div class="skill-progress-bg">
+                                <div class="skill-progress" style="width: 55%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-content" id="design">
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <div class="skill-name">UI/UX Design</div>
+                                <div class="skill-percent">85%</div>
+                            </div>
+                            <div class="skill-progress-bg">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <div class="skill-name">Figma / Adobe XD</div>
+                                <div class="skill-percent">80%</div>
+                            </div>
+                            <div class="skill-progress-bg">
+                                <div class="skill-progress" style="width: 80%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <div class="skill-name">Photoshop / Illustrator</div>
+                                <div class="skill-percent">75%</div>
+                            </div>
+                            <div class="skill-progress-bg">
+                                <div class="skill-progress" style="width: 75%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <div class="skill-name">Motion Design</div>
+                                <div class="skill-percent">70%</div>
+                            </div>
+                            <div class="skill-progress-bg">
+                                <div class="skill-progress" style="width: 70%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <div class="skill-name">Typography</div>
+                                <div class="skill-percent">73%</div>
+                            </div>
+                            <div class="skill-progress-bg">
+                                <div class="skill-progress" style="width: 73%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-content" id="3d">
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <div class="skill-name">3D Modeling</div>
+                                <div class="skill-percent">75%</div>
+                            </div>
+                            <div class="skill-progress-bg">
+                                <div class="skill-progress" style="width: 75%"></div>
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <div class="skill-name">Animation</div>
+                                <div class="skill-percent">85%</div>
+                            </div>
+                            <div class="skill-progress-bg">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <div class="skill-name">Blender</div>
+                                <div class="skill-percent">70%</div>
+                            </div>
+                            <div class="skill-progress-bg">
+                                <div class="skill-progress" style="width: 70%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <div class="skill-name">Texture Creation</div>
+                                <div class="skill-percent">75%</div>
+                            </div>
+                            <div class="skill-progress-bg">
+                                <div class="skill-progress" style="width: 75%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section id="testimonials" class="testimonials">
+            <div class="section-header">
+                <h2 class="section-title">Client <span class="gradient-text">Testimonials</span></h2>
+                <div class="section-line"></div>
+            </div>
+            
+            <div class="testimonials-container">
+                <div class="testimonial-slider">
+                    <div class="testimonial-slide active">
+                        <div class="testimonial-card">
+                            <div class="testimonial-quote"><i class="fas fa-quote-left"></i></div>
+                            <p class="testimonial-text">Collaborating with Sharaafath was an absolute game-changer. The 3D visuals and smooth interactivity he implemented turned our website into something extraordinary. His skills speak for themselves. Definitely recommend!</p>
+                            <div class="testimonial-author">
+                                <div class="author-image">
+                                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIf4R5qPKHPNMyAqV-FjS_OTBB8pfUV29Phg&s" alt="Hazzan">
+                                </div>
+                                <div class="author-info">
+                                    <h4>Hazzan</h4>
+                                    <p>Developer</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-slide">
+                        <div class="testimonial-card">
+                            <div class="testimonial-quote"><i class="fas fa-quote-left"></i></div>
+                            <p class="testimonial-text">Thanks to the 3D product configurator Sharaafath developed, our e-commerce conversions jumped by 40%! His precision, creativity, and technical brilliance made all the difference. Highly recommend his work!</p>
+                            <div class="testimonial-author">
+                                <div class="author-image">
+                                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIf4R5qPKHPNMyAqV-FjS_OTBB8pfUV29Phg&s" alt="Husain">
+                                </div>
+                                <div class="author-info">
+                                    <h4>Husain</h4>
+                                    <p>Marketing Director, StyleHub</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-slide">
+                        <div class="testimonial-card">
+                            <div class="testimonial-quote"><i class="fas fa-quote-left"></i></div>
+                            <p class="testimonial-text">Sharaafath's creative approach to our data visualization project transformed complex data into an engaging, interactive experience. His work exceeded our expectations in every way.</p>
+                            <div class="testimonial-author">
+                                <div class="author-image">
+                                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIf4R5qPKHPNMyAqV-FjS_OTBB8pfUV29Phg&s" alt="Abzeer">
+                                </div>
+                                <div class="author-info">
+                                    <h4>Abzeer</h4>
+                                    <p>Research Lead</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-controls">
+                    <button class="testimonial-control active" data-slide="0"></button>
+                    <button class="testimonial-control" data-slide="1"></button>
+                    <button class="testimonial-control" data-slide="2"></button>
+                </div>
+                
+                <div class="testimonial-arrows">
+                    <button class="testimonial-arrow prev"><i class="fas fa-chevron-left"></i></button>
+                    <button class="testimonial-arrow next"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+            
+            <div id="testimonials-3d-background"></div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact">
+            <div class="section-header">
+                <h2 class="section-title">Get In <span class="gradient-text">Touch</span></h2>
+                <div class="section-line"></div>
+            </div>
+            
+            <div class="contact-container">
+                <div class="contact-info">
+                
+                 <!-- Location -->
+<div class="contact-card">
+    <a href="https://maps.app.goo.gl/dDHK4KTkPQa5ep5v7" target="_blank" style="display: flex; align-items: center; color: inherit; text-decoration: none;">
+        <div class="contact-card-icon">
+            <i class="fas fa-map-marker-alt"></i>
+        </div>
+        <div class="contact-card-content">
+            <h3>Location</h3>
+            <p>UD 1/2 Ampara Road, Sammanthurai, Sri Lanka</p>
+        </div>
+    </a>
+</div>
+
+<!-- Email -->
+<div class="contact-card">
+    <a href="mailto:anversharaafath16@gmail.com" style="display: flex; align-items: center; color: inherit; text-decoration: none;">
+        <div class="contact-card-icon">
+            <i class="fas fa-envelope"></i>
+        </div>
+        <div class="contact-card-content">
+            <h3>Email</h3>
+            <p>anversharaafath16@gmail.com</p>
+        </div>
+    </a>
+</div>
+
+            
+<div class="contact-card">
+    <a href="tel:+94720780274" style="display: flex; align-items: center; color: inherit; text-decoration: none;">
+        <div class="contact-card-icon">
+            <i class="fas fa-phone"></i>
+        </div>
+        <div class="contact-card-content">
+            <h3>Phone</h3>
+            <p>+94 (72) 078-0274</p>
+        </div>
+    </a>
+</div>
+
+                    
+                    <div class="contact-social">
+                        <h3>Follow Me</h3>
+                        <div class="social-links">
+                            <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-dribbble"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form-container">
+                    <form id="contact-form" class="contact-form">
+                        <div class="form-group">
+                            <input type="text" id="name" name="name" required>
+                            <label for="name">Your Name</label>
+                            <span class="form-highlight"></span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <input type="email" id="email" name="email" required>
+                            <label for="email">Your Email</label>
+                            <span class="form-highlight"></span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <input type="text" id="subject" name="subject" required>
+                            <label for="subject">Subject</label>
+                            <span class="form-highlight"></span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <textarea id="message" name="message" required></textarea>
+                            <label for="message">Your Message</label>
+                            <span class="form-highlight"></span>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary">
+                            <span>Send Message</span>
+                            <div class="btn-glow"></div>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <div class="contact-3d-element" id="contact-3d-element"></div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <div class="logo-text">Portfolio</div>
+                <div class="logo-dot"></div>
+            </div>
+            
+            <div class="footer-links">
+                <div class="footer-nav">
+                    <h3>Navigation</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#projects">Projects</a></li>
+                        <li><a href="#skills">Skills</a></li>
+                        <li><a href="#testimonials">Testimonials</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-social">
+                    <h3>Social</h3>
+                    <ul>
+                        <li><a href="#"><i class="fab fa-github"></i> GitHub</a></li>
+                        <li><a href="#"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+                        <li><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li>
+                        <li><a href="#"><i class="fab fa-dribbble"></i> Dribbble</a></li>
+                        <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> UD 1/2 Ampara Road Sammanthurai, Sri Lanka</li>
+                        <li><i class="fas fa-envelope"></i> anversharaafath16@gmail.com</li>
+                        <li><i class="fas fa-phone"></i> +94 (72) 078-0274</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>© 2025 AK Development. All rights reserved by founder & developer Sharaafath.</p>
+                <p>Designed and developed by Sharaafath with <i class="fas fa-heart"></i></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <div class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.2/vanilla-tilt.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
