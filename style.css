@@ -2364,3 +2364,125 @@ footer {
     opacity: 0.8;
   }
 }
+
+/* Improve mobile responsiveness for 3D elements */
+@media screen and (max-width: 768px) {
+  /* Ensure 3D elements are visible on mobile */
+  #webgl-background,
+  #hero-canvas-container,
+  .hero-3d-text,
+  #about-3d-scene,
+  #projects-3d-background,
+  #testimonials-3d-background,
+  .skills-3d,
+  .model-showcase,
+  .project-canvas-container,
+  .contact-3d-element {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    z-index: 0;
+  }
+
+  /* Make 3D text more visible on mobile */
+  .hero-3d-text {
+    height: 150px;
+    bottom: 15%;
+  }
+
+  /* Ensure model showcase is properly sized on mobile */
+  .model-showcase {
+    height: 50vh;
+  }
+
+  /* Make skills sphere more visible */
+  .skills-3d {
+    height: 35rem;
+  }
+  
+  /* Improve visibility of 3D elements */
+  .model-text h2 {
+    font-size: 3.5rem;
+  }
+  
+  /* Ensure project cards show 3D elements */
+  .project-card:hover .project-canvas-container {
+    opacity: 1;
+  }
+  
+  /* Make 3D elements visible without hover on mobile */
+  .project-canvas-container {
+    opacity: 0.5;
+  }
+}
+
+/* Add specific styles for very small screens */
+@media screen and (max-width: 480px) {
+  /* Further optimize for small mobile screens */
+  .hero-3d-text {
+    height: 100px;
+    bottom: 20%;
+  }
+  
+  .model-showcase {
+    height: 40vh;
+  }
+  
+  /* Ensure buttons and controls are easily tappable */
+  .btn, 
+  .filter-btn, 
+  .tab-btn, 
+  .model-control,
+  .testimonial-control {
+    padding: 1.2rem 2rem;
+    min-height: 44px; /* Minimum touch target size */
+    min-width: 44px;
+  }
+  
+  /* Improve visibility of 3D elements on small screens */
+  .skills-3d {
+    height: 30rem;
+  }
+}
+
+/* Touch Device Optimizations */
+@media (hover: none) {
+  .cursor-dot,
+  .cursor-outline {
+    display: none;
+  }
+
+  /* Make 3D elements more interactive on touch devices */
+  .skills-interaction-hint {
+    display: block !important;
+    opacity: 0.8;
+  }
+  
+  /* Show 3D elements without requiring hover */
+  .project-canvas-container {
+    opacity: 0.5;
+  }
+  
+  /* Make project links visible without hover */
+  .project-overlay {
+    opacity: 0.7;
+  }
+  
+  .project-link {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Add hardware acceleration for smoother animations */
+.hero-content,
+.about-image-wrapper,
+.project-card,
+.skill-progress,
+.testimonial-card,
+.contact-card,
+canvas {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-font-smoothing: subpixel-antialiased;
+}
