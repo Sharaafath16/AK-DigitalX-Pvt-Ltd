@@ -2,48 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <!-- Add proper viewport meta tag with maximum-scale to prevent unwanted zooming -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AK DigitalX</title>
     <link rel="icon" href="https://github.com/Sharaafath16/AK-DigitalX-Pvt-Ltd/blob/main/or%20log.png?raw=true">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Add preload hints for critical Three.js resources -->
-    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" as="script">
-    <link rel="preload" href="https://threejs.org/examples/fonts/helvetiker_bold.typeface.json" as="fetch" crossorigin>
 </head>
 <body>
-    <!-- Add a fallback message for devices that don't support WebGL -->
-    <div id="webgl-error" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); color: white; z-index: 9999; text-align: center; padding-top: 20%;">
-        <div style="max-width: 80%; margin: 0 auto;">
-            <h2>WebGL Not Supported</h2>
-            <p>Your device or browser doesn't seem to support WebGL, which is required for the 3D effects on this site.</p>
-            <p>Please try using a modern browser like Chrome, Firefox, or Safari.</p>
-            <button onclick="this.parentElement.parentElement.style.display='none'" style="padding: 10px 20px; margin-top: 20px; background: #6c63ff; border: none; color: white; border-radius: 5px; cursor: pointer;">
-                Continue Anyway
-            </button>
-        </div>
-    </div>
-
-    <!-- Add WebGL detection script before other scripts -->
-    <script>
-        // Check if WebGL is available
-        function webglAvailable() {
-            try {
-                const canvas = document.createElement('canvas');
-                return !!(window.WebGLRenderingContext && 
-                    (canvas.getContext('webgl') || canvas.getContext('experimental-webgl')));
-            } catch(e) {
-                return false;
-            }
-        }
-        
-        // Show error message if WebGL is not supported
-        if (!webglAvailable()) {
-            document.getElementById('webgl-error').style.display = 'flex';
-        }
-    </script>
-
     <!-- Theme Toggle -->
     <div class="theme-toggle">
         <div class="toggle-icon light-icon"><i class="fas fa-sun"></i></div>
