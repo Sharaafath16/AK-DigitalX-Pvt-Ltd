@@ -307,27 +307,33 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Check if device is mobile
   function isMobile() {
-    return window.innerWidth <= 768 || 
-           ('ontouchstart' in window) || 
-           (navigator.maxTouchPoints > 0) || 
-           (navigator.msMaxTouchPoints > 0);
-  }
+  return window.innerWidth <= 768 || 
+         ('ontouchstart' in window) || 
+         (navigator.maxTouchPoints > 0) || 
+         (navigator.msMaxTouchPoints > 0);
+}
 
   // Initialize WebGL Background
   function initWebGLBackground() {
-    const container = document.getElementById("webgl-background")
-    if (!container) return
+  const container = document.getElementById("webgl-background")
+  if (!container) return
 
-    const scene = new THREE.Scene()
-    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000)
-    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true })
+  const scene = new THREE.Scene()
+  const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000)
+  const renderer = new THREE.WebGLRenderer({ 
+    antialias: false, // Disable antialiasing on mobile for better performance
+    alpha: true,
+    powerPreference: 'high-performance' 
+  })
 
-    renderer.setSize(window.innerWidth, window.innerHeight)
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)) // Limit pixel ratio for better performance
-    container.appendChild(renderer.domElement)
+  // Adjust resolution based on device
+  const pixelRatio = isMobile() ? Math.min(window.devicePixelRatio, 1.5) : Math.min(window.devicePixelRatio, 2);
+  renderer.setPixelRatio(pixelRatio)
+  renderer.setSize(window.innerWidth, window.innerHeight)
+  container.appendChild(renderer.domElement)
 
-    // Create shader material
-    const vertexShader = `
+  // Create shader material
+  const vertexShader = `
       varying vec2 vUv;
       varying vec3 vPosition;
       
@@ -338,7 +344,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     `
 
-    const fragmentShader = `
+  const fragmentShader = `
       uniform float time;
       uniform vec3 color1;
       uniform vec3 color2;
@@ -357,43 +363,43 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     `
 
-    const uniforms = {
-      time: { value: 0 },
-      color1: { value: new THREE.Color(0x6c63ff) },
-      color2: { value: new THREE.Color(0xf72585) },
-      color3: { value: new THREE.Color(0x4ecdc4) },
-    }
-
-    const material = new THREE.ShaderMaterial({
-      vertexShader,
-      fragmentShader,
-      uniforms,
-      transparent: true,
-    })
-
-    // Create a plane that covers the screen
-    const geometry = new THREE.PlaneGeometry(50, 50, 32, 32)
-    const plane = new THREE.Mesh(geometry, material)
-    scene.add(plane)
-
-    camera.position.z = 5
-
-    // Handle window resize
-    window.addEventListener("resize", () => {
-      camera.aspect = window.innerWidth / window.innerHeight
-      camera.updateProjectionMatrix()
-      renderer.setSize(window.innerWidth, window.innerHeight)
-    })
-
-    // Animation loop
-    function animate() {
-      requestAnimationFrame(animate)
-      uniforms.time.value += 0.01
-      renderer.render(scene, camera)
-    }
-
-    animate()
+  const uniforms = {
+    time: { value: 0 },
+    color1: { value: new THREE.Color(0x6c63ff) },
+    color2: { value: new THREE.Color(0xf72585) },
+    color3: { value: new THREE.Color(0x4ecdc4) },
   }
+
+  const material = new THREE.ShaderMaterial({
+    vertexShader,
+    fragmentShader,
+    uniforms,
+    transparent: true,
+  })
+
+  // Create a plane that covers the screen
+  const geometry = new THREE.PlaneGeometry(50, 50, 32, 32)
+  const plane = new THREE.Mesh(geometry, material)
+  scene.add(plane)
+
+  camera.position.z = 5
+
+  // Handle window resize
+  window.addEventListener("resize", () => {
+    camera.aspect = window.innerWidth / window.innerHeight
+    camera.updateProjectionMatrix()
+    renderer.setSize(window.innerWidth, window.innerHeight)
+  })
+
+  // Animation loop
+  function animate() {
+    requestAnimationFrame(animate)
+    uniforms.time.value += 0.01
+    renderer.render(scene, camera)
+  }
+
+  animate()
+}
 
   // Initialize particles background
   function initParticlesBackground() {
@@ -433,22 +439,26 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Initialize Three.js for hero section
   function initHeroCanvas() {
-    const canvas = document.getElementById("hero-canvas")
-    if (!canvas) return
+  const canvas = document.getElementById("hero-canvas")
+  if (!canvas) return
 
-    const scene = new THREE.Scene()
-    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000)
-    const renderer = new THREE.WebGLRenderer({
-      canvas: canvas,
-      antialias: true,
-      alpha: true,
-    })
+  const scene = new THREE.Scene()
+  const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000)
+  const renderer = new THREE.WebGLRenderer({
+    canvas: canvas,
+    antialias: isMobile() ? false : true, // Disable antialiasing on mobile
+    alpha: true,
+    powerPreference: 'high-performance'
+  })
 
-    renderer.setSize(window.innerWidth, window.innerHeight)
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)) // Limit pixel ratio for better performance
+  renderer.setSize(window.innerWidth, window.innerHeight)
+  
+  // Reduce pixel ratio on mobile
+  const pixelRatio = isMobile() ? Math.min(window.devicePixelRatio, 1.5) : Math.min(window.devicePixelRatio, 2);
+  renderer.setPixelRatio(pixelRatio)
 
-    // Create particles
-    const particlesCount = isMobile() ? 2000 : 5000 // Reduce particles on mobile
+  // Create particles with reduced count on mobile
+  const particlesCount = isMobile() ? 1000 : 5000 // Significantly reduce particles on mobile
     const particlesGeometry = new THREE.BufferGeometry()
     const posArray = new Float32Array(particlesCount * 3)
     const colorsArray = new Float32Array(particlesCount * 3)
@@ -543,36 +553,49 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Initialize 3D Text in Hero Section
   function init3DText() {
-    const container = document.getElementById("hero-3d-text")
-    if (!container) return
+  const container = document.getElementById("hero-3d-text")
+  if (!container) return
 
-    const scene = new THREE.Scene()
-    const camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 0.1, 1000)
-    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true })
+  const scene = new THREE.Scene()
+  // Use a fixed aspect ratio for mobile to prevent distortion
+  const aspect = isMobile() ? 2 : container.clientWidth / container.clientHeight;
+  const camera = new THREE.PerspectiveCamera(75, aspect, 0.1, 1000)
+  const renderer = new THREE.WebGLRenderer({ 
+    antialias: isMobile() ? false : true, 
+    alpha: true,
+    powerPreference: 'high-performance'
+  })
 
-    renderer.setSize(container.clientWidth, container.clientHeight)
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)) // Limit pixel ratio for better performance
-    container.appendChild(renderer.domElement)
+  // Set minimum size for mobile
+  const width = Math.max(container.clientWidth, 300);
+  const height = Math.max(container.clientHeight, 150);
+  renderer.setSize(width, height)
+  
+  // Reduce pixel ratio on mobile
+  const pixelRatio = isMobile() ? 1 : Math.min(window.devicePixelRatio, 2);
+  renderer.setPixelRatio(pixelRatio)
+  
+  container.appendChild(renderer.domElement)
 
-    // Load font
-    const fontLoader = new THREE.FontLoader()
-    fontLoader.load("https://threejs.org/examples/fonts/helvetiker_bold.typeface.json", (font) => {
-      // Adjust text size for mobile
-      const textSize = isMobile() ? 0.3 : 0.5
-      const textHeight = isMobile() ? 0.05 : 0.1
-      const bevelSize = isMobile() ? 0.01 : 0.02
-      
-      const textGeometry = new THREE.TextGeometry("CREATIVE DEVELOPER", {
-        font: font,
-        size: textSize,
-        height: textHeight,
-        curveSegments: isMobile() ? 8 : 12, // Reduce segments on mobile
-        bevelEnabled: true,
-        bevelThickness: 0.03,
-        bevelSize: bevelSize,
-        bevelOffset: 0,
-        bevelSegments: isMobile() ? 3 : 5,
-      })
+  // Load font
+  const fontLoader = new THREE.FontLoader()
+  fontLoader.load("https://threejs.org/examples/fonts/helvetiker_bold.typeface.json", (font) => {
+    // Adjust text size for mobile
+    const textSize = isMobile() ? 0.3 : 0.5
+    const textHeight = isMobile() ? 0.05 : 0.1
+    const bevelSize = isMobile() ? 0.01 : 0.02
+    
+    const textGeometry = new THREE.TextGeometry("CREATIVE DEVELOPER", {
+      font: font,
+      size: textSize,
+      height: textHeight,
+      curveSegments: isMobile() ? 8 : 12, // Reduce segments on mobile
+      bevelEnabled: true,
+      bevelThickness: 0.03,
+      bevelSize: bevelSize,
+      bevelOffset: 0,
+      bevelSegments: isMobile() ? 3 : 5,
+    })
 
       textGeometry.center()
 
@@ -1751,3 +1774,221 @@ document.addEventListener("DOMContentLoaded", () => {
     })
   }
 })
+
+// Improve mobile detection function to be more reliable
+function isMobile() {
+  return window.innerWidth <= 768 || 
+         ('ontouchstart' in window) || 
+         (navigator.maxTouchPoints > 0) || 
+         (navigator.msMaxTouchPoints > 0);
+}
+
+// Add a resize handler that properly updates all 3D elements
+window.addEventListener("resize", () => {
+  // Force recalculation of isMobile on resize
+  const mobile = isMobile();
+  
+  // Reinitialize critical 3D elements on significant width changes
+  if (window.innerWidth < 768 || window.innerWidth >= 768) {
+    // Delay reinitialization to prevent performance issues during resize
+    setTimeout(() => {
+      initWebGLBackground();
+      initHeroCanvas();
+      init3DText();
+      initAbout3DScene();
+      initSkillsCanvas();
+      initModelCanvas();
+    }, 300);
+  }
+});
+
+// Add touch event handlers for all 3D elements
+function addTouchInteractivity() {
+  const canvases = document.querySelectorAll('canvas');
+  
+  canvases.forEach(canvas => {
+    canvas.addEventListener('touchstart', (e) => {
+      e.preventDefault(); // Prevent default touch behavior
+    }, { passive: false });
+    
+    canvas.addEventListener('touchmove', (e) => {
+      e.preventDefault(); // Prevent default touch behavior like scrolling
+      
+      // Handle touch interaction similar to mouse movement
+      if (e.touches.length > 0) {
+        const touch = e.touches[0];
+        const rect = canvas.getBoundingClientRect();
+        const x = touch.clientX - rect.left;
+        const y = touch.clientY - rect.top;
+        
+        // Dispatch a synthetic mouse event to reuse existing mouse handlers
+        const mouseEvent = new MouseEvent('mousemove', {
+          clientX: touch.clientX,
+          clientY: touch.clientY,
+          bubbles: true,
+          cancelable: true,
+          view: window
+        });
+        
+        canvas.dispatchEvent(mouseEvent);
+      }
+    }, { passive: false });
+  });
+}
+
+// Call this function after all 3D elements are initialized
+function startAnimations() {
+  // Existing animation code...
+  gsap.registerPlugin(ScrollTrigger)
+
+    // Hero section animations
+    gsap.from(".hero-subtitle", {
+      y: 50,
+      opacity: 0,
+      duration: 1,
+      delay: 0.2,
+    })
+
+    gsap.from(".hero-title", {
+      y: 50,
+      opacity: 0,
+      duration: 1,
+      delay: 0.5,
+    })
+
+    gsap.from(".hero-description", {
+      y: 50,
+      opacity: 0,
+      duration: 1,
+      delay: 0.8,
+    })
+
+    gsap.from(".cta-buttons", {
+      y: 50,
+      opacity: 0,
+      duration: 1,
+      delay: 1.1,
+    })
+
+    gsap.from(".scroll-indicator", {
+      y: 50,
+      opacity: 0,
+      duration: 1,
+      delay: 1.4,
+    })
+
+    // Scroll animations for sections
+    gsap.utils.toArray(".section-header").forEach((header) => {
+      gsap.from(header, {
+        y: 50,
+        opacity: 0,
+        duration: 1,
+        scrollTrigger: {
+          trigger: header,
+          start: "top 80%",
+        },
+      })
+    })
+
+    // About section animations
+    gsap.from(".about-image-wrapper", {
+      x: -100,
+      opacity: 0,
+      duration: 1,
+      scrollTrigger: {
+        trigger: ".about-content",
+        start: "top 80%",
+      },
+    })
+
+    gsap.from(".experience-badge", {
+      scale: 0,
+      opacity: 0,
+      duration: 1,
+      delay: 0.3,
+      scrollTrigger: {
+        trigger: ".about-content",
+        start: "top 80%",
+      },
+    })
+
+    gsap.from(".about-text", {
+      x: 100,
+      opacity: 0,
+      duration: 1,
+      scrollTrigger: {
+        trigger: ".about-content",
+        start: "top 80%",
+      },
+    })
+
+    // Animate counters when they come into view
+    ScrollTrigger.create({
+      trigger: ".about-stats",
+      start: "top 80%",
+      onEnter: animateCounter,
+    })
+
+    // Project cards animations
+    gsap.utils.toArray(".project-card").forEach((card, i) => {
+      gsap.from(card, {
+        y: 100,
+        opacity: 0,
+        duration: 0.8,
+        delay: i * 0.1,
+        scrollTrigger: {
+          trigger: ".projects-grid",
+          start: "top 80%",
+        },
+      })
+    })
+
+    // Skills animations
+    animateSkillBars()
+    ScrollTrigger.create({
+      trigger: ".skills-content",
+      start: "top 80%",
+      onEnter: animateSkillBars,
+    })
+
+    // Testimonials animations
+    gsap.from(".testimonial-card", {
+      y: 50,
+      opacity: 0,
+      duration: 1,
+      scrollTrigger: {
+        trigger: ".testimonials-container",
+        start: "top 80%",
+      },
+    })
+
+    // Contact section animations
+    gsap.utils.toArray(".contact-card").forEach((card, i) => {
+      gsap.from(card, {
+        y: 50,
+        opacity: 0,
+        duration: 0.8,
+        delay: i * 0.2,
+        scrollTrigger: {
+          trigger: ".contact-container",
+          start: "top 80%",
+        },
+      })
+    })
+
+    gsap.from(".contact-form", {
+      y: 50,
+      opacity: 0,
+      duration: 0.8,
+      scrollTrigger: {
+        trigger: ".contact-container",
+        start: "top 80%",
+      },
+    })
+  
+  // Add touch interactivity for mobile
+  addTouchInteractivity();
+  
+  // Force a resize event to ensure everything is properly sized
+  window.dispatchEvent(new Event('resize'));
+}
